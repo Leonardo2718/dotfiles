@@ -1,0 +1,119 @@
+Config {
+
+   -- appearance
+     font =         "xft:Monospace:size=8:normal:antialias=true"
+   , bgColor =      "black"
+   , fgColor =      "#888888"
+   , position =     Top
+
+   -- layout
+   , sepChar =  "%"   -- delineator between plugin names and straight text
+   , alignSep = "}{"  -- separator between left-right alignment
+   --, template = "|%battery% |%multicpu% |%coretemp% |%memory% |%disku% |%bright% |wlp2s0: %wlp2s0wi% %wlp2s0% }{ %StdinReader% | %date%"
+   , template = "|%battery% |%multicpu% |%coretemp% |%memory% |%disku% |%swap% |%bright% |%dynnetwork% }{ %StdinReader% | %date%"
+
+   -- general behavior
+   , lowerOnStart =     True    -- send to bottom of window stack on start
+   , hideOnStart =      False   -- start with window unmapped (hidden)
+   , allDesktops =      True    -- show on all desktops
+   , overrideRedirect = True    -- set the Override Redirect flag (Xlib)
+   , pickBroadest =     False   -- choose widest display (multi-monitor)
+   , persistent =       True    -- enable/disable hiding (True = disabled)
+
+   -- plugins
+   , commands =
+
+        -- batter monitor; aliases to `battery`
+        [ Run BatteryP ["BAT0"] [ "--template"  , "Bat: <timeleft> <left>%"
+                                , "-L"          , "15"
+                                , "-H"          , "20"
+                                , "--low"       , "red"
+                                , "--normal"    , "orange"
+                                , "--high"      , "green"
+                                ] 10
+
+        -- cpu activity monitor; aliases to `multicpu`
+        , Run MultiCpu          [ "--template"  , "CPU: <vbar0> <vbar1> <vbar2> <vbar3>"
+                                , "--Low"       , "50"         -- units: %
+                                , "--High"      , "85"         -- units: %
+                                , "--low"       , "green"
+                                , "--normal"    , "orange"
+                                , "--high"      , "red"
+                                ] 10
+
+        -- cpu core temperature monitor; aliases to `coretemp`
+        , Run CoreTemp          [ "--template"  , "Temp°C: <core0> <core1> <core2> <core3>"
+                                , "--Low"       , "70"        -- units: °C
+                                , "--High"      , "80"        -- units: °C
+                                , "--low"       , "green"
+                                , "--normal"    , "orange"
+                                , "--high"      , "red"
+                                ] 10
+
+        -- memory usage monitor; aliases to `memory`
+        , Run Memory            [ "--template"  , "Mem: <usedratio>%"
+                                , "--Low"       , "70"        -- units: %
+                                , "--High"      , "90"        -- units: %
+                                , "--low"       , "green"
+                                , "--normal"    , "orange"
+                                , "--high"      , "red"
+                                ] 10
+
+        -- disk usage monitor; aliases to `disku`
+        , Run DiskU             [ ("/", "Disk: <usedp>%")]
+                                [ "--Low"       , "85"        -- units: %
+                                , "--High"      , "90"        -- units: %
+                                , "--low"       , "green"
+                                , "--normal"    , "orange"
+                                , "--high"      , "red"
+                                ] 100
+
+        -- swap usage monitor; aliases to `swap`
+        , Run Swap              [ "--template"  , "Swap: <usedratio>%"
+                                , "--Low"       , "0"        -- units: %
+                                , "--High"      , "5"        -- units: %
+                                , "--low"       , "green"
+                                , "--normal"    , "orange"
+                                , "--high"      , "red"
+                                ] 100
+
+        -- screen brightness monitor; aliases to `bright`
+        , Run Brightness        [ "--template"  , "Bright: <fc=#00CCFF><vbar></fc>"
+                                ] 10
+
+        -- network activity monitor (dynamic interface resolution); aliases to `dynnetwork`
+        , Run DynNetwork        [ "--template"  , "<dev>: U<tx> D<rx>"
+                                , "-S"          , "True"
+                                , "--Low"       , "100000"
+                                , "--High"      , "300000"
+                                , "--low"       , "#00CCFF"
+                                , "--normal"    , "green"
+                                , "--high"      , "green"
+                                ] 10
+
+        -- network activity monitor for `wlp2s0`; aliases to `wlp2s0`
+        , Run Network "wlp2s0"  [ "--template"  , "U<tx> D<rx>"
+                                , "-S"          , "True"
+                                , "--Low"       , "100000"
+                                , "--High"      , "300000"
+                                , "--low"       , "#00CCFF"
+                                , "--normal"    , "green"
+                                , "--high"      , "green"
+                                ] 10
+
+        -- network activity monitor for `wlp2s0`; aliases to `wlp2s0wi`
+        , Run Wireless "wlp2s0" [ "--template"  , "<essid> <qualityvbar>"
+                                , "--Low"       , "25"
+                                , "--High"      , "50"
+                                , "--low"       , "red"
+                                , "--normal"    , "orange"
+                                , "--high"      , "green"
+                                ] 10
+
+        , Run StdinReader
+
+        -- time and date
+        , Run Date "%Y %B %d (%A) %T" "date" 10
+
+        ]
+   }

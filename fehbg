@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --image-bg black --bg-center --no-fehbg ~/dotfiles/Wallpapers/archlinux-logo_yellow_dark.png

@@ -1,0 +1,108 @@
+!~urxvt~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+! Use Ctrl+<Mod>+C to copy a selection to the clipboard
+! Use Ctrl+<Mod>+V to paste from the clipboard
+
+! URxvt*.fading: 0              ! Fade the text by the given percentage when focus is lost.
+! URxvt*.fadeColor: #000000     ! Fade to this colour, when fading is used
+! URxvt*.borderColor: #000000
+URxvt*.title: urxvt
+! URxvt*.termName: urxvt          ! Specifies the terminal type name to be set in the TERM environment variable.
+URxvt*.saveLines: 4096
+URxvt*.modifier: alt            ! can be: alt, meta, hyper, super, mod1, mod2, mod3, mod4, or mod5
+! URxvt*.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+!                         Specify a command pipe for vt100 printer. Use Print to initiate
+!                         a screen dump to the printer and Ctrl-Print or Shift-Print to include the
+!                         scrollback as well.
+!
+!                         The string will be interpreted as if typed into the shell as-is.
+!
+!                         Example:
+!
+!                         URxvt.print-pipe: cat > $(TMPDIR=$HOME mktemp urxvt.XXXXXX)
+!
+!                         This creates a new file in your home directory with the screen contents every
+!                         time you hit "Print".
+
+! URxvt*.keysym.sym: action   ! Associate action with keysym sym
+
+
+! URxvt*.borderLess: True     ! no window decorations
+! URxvt*.internalBorder: 0    ! size of internal border in pixels
+! URxvt*.externalBorder: 0    ! size of external border in pixels
+
+URxvt*.font: xft:dejavu sans mono:size=8, xft:bitstream vera sans mono:size=8, xft:freemono:size=10, sft:linux libertine mono:size=10
+URxvt*.letterSpace: -1
+! URxvt*.lineSpace: 0
+URxvt*.visualBell: True
+! URxvt*.skipBuiltinGlyphs: False ! Disable the usage of the built-in block graphics/line drawing characters and just rely on what the specified fonts provide
+
+URxvt*.background: #000000
+URxvt*.foreground: #888888
+! URxvt*.colorBD: #888888 ! color for bolded text
+! URxvt*.colorIT: #888888 ! color for italisized text
+! URxvt*.colorUL: #888888 ! color for underlined text
+! URxvt*.underlineColor: #888888 ! color for the underline itself
+! URxvt*.highlightColor: #888888 ! background color for highlighted text
+! URxvt*.highlightTextColor: #000000  ! foreground color for highlighted text
+
+! URxvt*.cursorColor: #888888     ! color of the cursor
+! URxvt*.cursorColor2: #000000    ! color of text under cursor
+! URxvt*.cursorUnderline: False   ! True: Make the cursor underlined. False: Make the cursor a box.
+! URxvt*.cursorBlink: True
+! URxvt*.pastableTabs: True       ! True: store tabs as wide characters. False: interpret tabs as cursor movement only.
+
+! URxvt*.scrollBar: True              ! display scroll bar
+! URxvt*.scrollBar_right: False       ! display scroll bar on right side of screen
+URxvt*.scrollstyle: plain           ! scroll bar style can be: rxvt, plain, next or xterm
+URxvt*.thickness: 6                 ! scroll bar thickness in pixels
+! URxvt*.scrollBar_floating: False    ! display scroll bar without through (not applicable when plain)
+! URxvt*.scrollColor: #888888 ! scroll bar color
+! URxvt*.troughColor: #000000 ! scroll bar through color
+URxvt*.jumpScroll: True ! True: specify that jump scrolling should be used. When receiving lots of lines,
+!                         urxvt will only scroll once a whole screen height of lines has been read.
+!                         False: specify that smooth scrolling should be used. urxvt will force a screen
+!                         refresh on each new line it received.
+URxvt*.skipScroll: False! True: (the default) specify that skip scrolling should be used. When receiving
+!                         lots of lines, urxvt will only scroll once in a while (around 60 times per
+!                         second), resulting in far fewer updates. This can result in urxvt not ever
+!                         displaying some of the lines it receives.
+!                         False: specify that everything is to be displayed, even if the refresh is too
+!                         fast for the human eye to read anything (or the monitor to display anything)
+! URxvt*.scrollBar_align: center  ! can be: top, bottom, or center
+! URxvt*.mouseWheelScrollPage: False      ! True: the mouse wheel scrolls a page full. False: the mouse wheel scrolls five lines.
+
+! URxvt*.pointerBlank: boolean
+!           True: blank the pointer when a key is pressed or after a set number of seconds of
+!           inactivity. False: the pointer is always visible [default].
+! URxvt*.pointerColor: colour     ! Mouse pointer foreground colour.
+! URxvt*.pointerColor2: colour
+!           Mouse pointer background colour.
+! URxvt*.pointerBlankDelay: number
+!           Specifies number of seconds before blanking the pointer [default 2]. Use a large
+!           number (e.g. 987654321) to effectively disable the timeout.
+
+
+
+!~xcursor~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Xcursor.theme: Tango
+
+
+
+!~xterm~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+xterm*faceName:           xft:monospace:size=8, xft:bitstream vera sans mono:size=8, xft:freemono:size=10, sft:linux libertine mono:size=10
+xterm*dynamicColors:      true
+xterm*utf8:               2
+xterm*eightBitInput:      true
+xterm*saveLines:          512
+xterm*scrollKey:          true
+xterm*scrollTtyOutput:    false
+xterm*scrollBar:          true
+xterm*rightScrollBar:     false
+xterm*jumpScroll:         true
+xterm*multiScroll:        true
+xterm*toolBar:            false
+xterm*background: #000000
+!xterm*foreground: #babdb6
+xterm*foreground: #888888
