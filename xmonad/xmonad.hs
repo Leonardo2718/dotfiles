@@ -57,8 +57,6 @@ myKeys = [ --((0, xK_Print), spawn "scrot -q 100")                            --
          --media controls
          --, ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 1%-")    --decrease volume by 1%
          --, ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 1%+")    --increase volume by 1%
-         --, ((myModMask, xK_F9), spawn "light -a -p -U 10")                  --decrease display brightness by 10%
-         --, ((myModMask, xK_F10), spawn "light -a -p -A 10")                 --increase display brightness by 10%
 
          --layout controls
          --, ((myModMask .|. mod1Mask, xK_g), sendMessage $ JumpToLayout "Grid")
