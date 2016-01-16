@@ -10,7 +10,7 @@ Config {
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
    --, template = "|%battery% |%multicpu% |%coretemp% |%memory% |%disku% |%bright% |wlp2s0: %wlp2s0wi% %wlp2s0% }{ %StdinReader% | %date%"
-   , template = "|%battery% |%multicpu% |%coretemp% |%memory% |%disku% |%swap% |%bright% |%dynnetwork% }{ %StdinReader% | %date%"
+   , template = "|%multicpu% |%coretemp% |%memory% |%disku% |%swap% |%bright% |%dynnetwork% }{ %StdinReader% | %date%"
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -33,7 +33,7 @@ Config {
                                 ] 10
 
         -- cpu activity monitor; aliases to `multicpu`
-        , Run MultiCpu          [ "--template"  , "CPU: <vbar0> <vbar1> <vbar2> <vbar3>"
+        , Run MultiCpu          [ "--template"  , "CPU: <vbar0> <vbar1>"
                                 , "--Low"       , "50"         -- units: %
                                 , "--High"      , "85"         -- units: %
                                 , "--low"       , "green"
@@ -42,7 +42,7 @@ Config {
                                 ] 10
 
         -- cpu core temperature monitor; aliases to `coretemp`
-        , Run CoreTemp          [ "--template"  , "Temp°C: <core0> <core1> <core2> <core3>"
+        , Run CoreTemp          [ "--template"  , "Temp°C: <core0> <core1>"
                                 , "--Low"       , "70"        -- units: °C
                                 , "--High"      , "80"        -- units: °C
                                 , "--low"       , "green"
