@@ -54,9 +54,9 @@ myKeys = [ --((0, xK_Print), spawn "scrot -q 100")                            --
 
          ((myModMask, xK_p), spawn "dmenu_run -fn 'xft:Monospace:size=8:normal:antialias=true' -nb 'black' -nf 'yellow' -sb 'yellow' -sf 'black'")
 
-         --media controls
-         --, ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 1%-")    --decrease volume by 1%
-         --, ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 1%+")    --increase volume by 1%
+         --media controls (for when hardware defaults don't work)
+         , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 1%-")    --decrease volume by 1%
+         , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 1%+")    --increase volume by 1%
 
          --layout controls
          --, ((myModMask .|. mod1Mask, xK_g), sendMessage $ JumpToLayout "Grid")
