@@ -68,10 +68,11 @@ myKeys = [ --((0, xK_Print), spawn "scrot -q 100")                            --
 
 
 --layout hook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-myLayoutHook = onWorkspace "1" terminalLayout $ onWorkspace "2" internetLayout $ devLayout where
+myLayoutHook = onWorkspace "1" terminalLayout $ onWorkspace "2" internetLayout $ onWorkspace "3" devLayout $ onWorkspace "4" devLayout $ onWorkspace "5" devLayout $ onWorkspace "6" devLayout $ onWorkspace "7" floatingLayout $ onWorkspace "8" floatingLayout $ standardLayout where
     terminalLayout  = Grid ||| myTall ||| Full ||| myOneBig
     internetLayout  = Full ||| simpleTabbed ||| simpleFloat
-    devLayout       = Full ||| myTwoPane ||| simpleTabbed ||| simpleFloat
+    devLayout       = Full ||| myTwoPane ||| simpleTabbed
+    floatingLayout  = simpleFloat ||| simpleTabbed
     standardLayout  = myTall ||| Mirror myTall ||| Full ||| Grid ||| myOneBig ||| simpleFloat ||| simpleTabbed
 
     myTwoPane       = TwoPane delta masterPortion where
@@ -87,12 +88,16 @@ myLayoutHook = onWorkspace "1" terminalLayout $ onWorkspace "2" internetLayout $
 
 
 --management hook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{-
+use `xprop` to get a "className" or "appName"
+-}
 
 myManageHook = composeAll
-    [ --className =? "KeePass2"   --> doFloat --float keepass
+    [ className =? "KeePass2"   --> doShift "7" -- move keepass to workspace 7
+    , title     =? "Encryptr"   --> doShift "7"
     --, className =? "VirtualBox" --> doFloat
     --, className =? "Gimp"       --> doFloat
-    ] --use "xprop" to get a `className` or `appName`
+    ]
 
 
 --startup hook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
