@@ -88,12 +88,16 @@ myLayoutHook = onWorkspace "1" terminalLayout $ onWorkspace "2" internetLayout $
 
 
 --management hook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+{-
+use `xprop` to get a "className" or "appName"
+-}
 
 myManageHook = composeAll
-    [ --className =? "KeePass2"   --> doFloat --float keepass
+    [ className =? "KeePass2"   --> doShift "7" -- move keepass to workspace 7
+    , title     =? "Encryptr"   --> doShift "7"
     --, className =? "VirtualBox" --> doFloat
     --, className =? "Gimp"       --> doFloat
-    ] --use "xprop" to get a `className` or `appName`
+    ]
 
 
 --startup hook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
