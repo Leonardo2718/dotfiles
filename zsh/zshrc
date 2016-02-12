@@ -49,4 +49,5 @@ RPROMPT="[%?] %(?.:).:()"
 
 bindkey "${terminfo[khome]}" beginning-of-line  # support "home" key
 bindkey "${terminfo[kend]}" end-of-line         # support "end" key
+bindkey "${terminfo[kdch1]}" delete-char        # support "delete" key
 
