@@ -47,3 +47,6 @@ promptinit
 PROMPT="%n@%m %~%# "
 RPROMPT="[%?] %(?.:).:()"
 
+bindkey "${terminfo[khome]}" beginning-of-line  # support "home" key
+bindkey "${terminfo[kend]}" end-of-line         # support "end" key
+
