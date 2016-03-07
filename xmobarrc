@@ -3,7 +3,7 @@ Config {
    -- appearance
      font =         "xft:Monospace:size=8:normal:antialias=true"
    , bgColor =      "black"
-   , fgColor =      "#888888"
+   , fgColor =      "#b3b3b3"
    , position =     Top
 
    -- layout
