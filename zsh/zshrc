@@ -43,9 +43,10 @@ bindkey -e
 # Lines manually added
 
 autoload -U promptinit
+autoload -U colors && colors
 promptinit
-PROMPT="%n@%m %~%# "
-RPROMPT="[%?] %(?.:).:()"
+PROMPT="%F{yellow}%n@%m%f %F{cyan}%~%f%F{yellow}>%f "
+RPROMPT="[%(?.%F{green}%?%f.%F{red}%?%f)] %(?.:).:()"
 
 bindkey "${terminfo[khome]}" beginning-of-line  # support "home" key
 bindkey "${terminfo[kend]}" end-of-line         # support "end" key
