@@ -9,3 +9,4 @@ set shiftwidth=4
 set expandtab
 set listchars=tab:»»,trail:·,eol:¬,extends:>,precedes:<
 set list
+colorscheme colorer

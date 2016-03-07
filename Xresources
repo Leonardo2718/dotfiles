@@ -37,7 +37,7 @@ URxvt*.visualBell: True
 ! URxvt*.skipBuiltinGlyphs: False ! Disable the usage of the built-in block graphics/line drawing characters and just rely on what the specified fonts provide
 
 URxvt*.background: #000000
-URxvt*.foreground: #888888
+URxvt*.foreground: #b3b3b3
 ! URxvt*.colorBD: #888888 ! color for bolded text
 ! URxvt*.colorIT: #888888 ! color for italisized text
 ! URxvt*.colorUL: #888888 ! color for underlined text
