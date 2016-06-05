@@ -8,6 +8,7 @@ After editing this file, use `mod+q` to restart xmonad
 import XMonad hiding ( (|||) )              -- don't use the normal `|||` operator
 import XMonad.Layout.LayoutCombinators      -- use the `|||` from LayoutCombinators instead
 import XMonad.Hooks.DynamicLog              --used for status bar
+import XMonad.Hooks.EwmhDesktops (ewmh)
 import XMonad.Hooks.ManageDocks             --used for status bar
 import XMonad.Util.Run(spawnPipe)           --used to start xmobar
 import System.IO(hPutStrLn)
@@ -27,6 +28,8 @@ import XMonad.Util.NamedWindows
 
 import XMonad.Layout.LayoutModifier
 import XMonad.Hooks.UrgencyHook
+
+--import System.Taffybar.Hooks.PagerHints (pagerHints)
 
 
 --the basics~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -115,6 +118,7 @@ myStartupHook = do
 
 main = do
     din <- spawnPipe myStatusBar
+    --xmonad $ ewmh $ pagerHints $ defaultConfig
     xmonad $ defaultConfig
         { terminal          = myTerminal
         , modMask           = myModMask

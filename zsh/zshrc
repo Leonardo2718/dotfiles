@@ -44,8 +44,15 @@ bindkey -e
 
 autoload -U promptinit
 autoload -U colors && colors
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats ' %F{5}(%b)%f'
+zstyle ':vcs_info:*' enabel git
+setopt prompt_subst
 promptinit
-PROMPT="%F{yellow}%n@%m%f %F{cyan}%~%f%F{yellow}>%f "
+precmd () {
+    vcs_info
+}
+PROMPT="%F{yellow}%m%f %F{cyan}%~%f$(echo '$vcs_info_msg_0_')%F{yellow}>%f "
 RPROMPT="[%(?.%F{green}%?%f.%F{red}%?%f)] %(?.:).:()"
 
 bindkey "${terminfo[khome]}" beginning-of-line  # support "home" key
