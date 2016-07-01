@@ -8,3 +8,4 @@ rm $HOME/.xmobarrc
 rm $HOME/.fehbg
 rm $HOME/.textadept
 rm $HOME/.stalonetrayrc
+rm $HOME/.config/termite

@@ -8,3 +8,4 @@ ln -s $PWD/xmobarrc $HOME/.xmobarrc
 ln -s $PWD/fehbg $HOME/.fehbg
 ln -s $PWD/textadept $HOME/.textadept
 ln -s $PWD/stalonetrayrc $HOME/.stalonetrayrc
+ln -s $PWD/termite $HOME/.config/termite
