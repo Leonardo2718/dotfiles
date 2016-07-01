@@ -96,8 +96,10 @@ use `xprop` to get a "className" or "appName"
 -}
 
 myManageHook = composeAll
-    [ className =? "KeePass2"   --> doShift "7" -- move keepass to workspace 7
-    , title     =? "Encryptr"   --> doShift "7"
+    [ className =? "vivaldi-stable" --> doShift "2"
+    , className =? "Slack"          --> doShift "2"
+    , title     =? "Encryptr"       --> doShift "7"
+    , className =? "KeePass2"       --> doShift "7" -- move keepass to workspace 7
     --, className =? "VirtualBox" --> doFloat
     --, className =? "Gimp"       --> doFloat
     ]
@@ -107,10 +109,11 @@ myManageHook = composeAll
 
 myStartupHook :: X ()
 myStartupHook = do
-    --spawn "xcompmgr -c"                        --load compositor
-    --spawn "compton"                        --load compositor
-    spawn "xrdb ~/.Xresources"              --load X resources for this session
-    spawn "sh ~/.fehbg"                     --set a wallpaper using feh
+    --spawn "xcompmgr -c"         -- load compositor
+    spawn "compton"             -- load compositor
+    spawn "xrdb ~/.Xresources"  -- load X resources for this session
+    spawn "sh ~/.fehbg"         -- set a wallpaper using feh
+    spawn "stalonetray"         -- load stalonetray system tray
     --spawn "xsetroot -cursor_name left_ptr"  --use a "normal" cursor
 
 
