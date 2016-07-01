@@ -1,11 +1,10 @@
 #! /usr/bin/sh
 
-current_dir=`pwd`
-
-ln -s $current_dir/zsh/zshrc ~/.zshrc
-ln -s $current_dir/Xresources ~/.Xresources
-ln -s $current_dir/xmonad ~/.xmonad
-ln -s $current_dir/vimrc ~/.vimrc
-ln -s $current_dir/xmobarrc ~/.xmobarrc
-ln -s $current_dir/fehbg ~/.fehbg
-ln -s $current_dir/textadept ~/.textadept
+ln -s $PWD/zsh/zshrc $HOME/.zshrc
+ln -s $PWD/Xresources $HOME/.Xresources
+ln -s $PWD/xmonad $HOME/.xmonad
+ln -s $PWD/vimrc $HOME/.vimrc
+ln -s $PWD/xmobarrc $HOME/.xmobarrc
+ln -s $PWD/fehbg $HOME/.fehbg
+ln -s $PWD/textadept $HOME/.textadept
+ln -s $PWD/stalonetrayrc $HOME/.stalonetrayrc
