@@ -55,7 +55,8 @@ use the `xev` command to get key names
 myKeys = [ --((0, xK_Print), spawn "scrot -q 100")                            --take screenshot when 'Prt sc' is pressed
          --, ((0, xK_Alt_L .|. xK_Print), spawn "scrot -s -q 100")            --select an area using the mouse and take a screenshot of it
 
-         ((myModMask, xK_p), spawn "dmenu_run -fn 'xft:Monospace:size=8:normal:antialias=true' -nb 'black' -nf 'yellow' -sb 'yellow' -sf 'black'")
+           ((myModMask, xK_p), spawn "dmenu_run -fn 'xft:Monospace:size=8:normal:antialias=true' -nb 'black' -nf 'yellow' -sb 'yellow' -sf 'black'")
+         , ((myModMask, xK_l), spawn "xscreensaver-command --lock")     -- lock screen
 
          --media controls (for when hardware defaults don't work)
          , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 1%-")    --decrease volume by 1%
@@ -96,10 +97,11 @@ use `xprop` to get a "className" or "appName"
 -}
 
 myManageHook = composeAll
-    [ className =? "vivaldi-stable" --> doShift "2"
+    [ className =? "vivaldi-stable" --> doShift "2" -- move vivaldi to workspace 2
+    , className =? "Firefox"        --> doShift "2"
     , className =? "Slack"          --> doShift "2"
     , title     =? "Encryptr"       --> doShift "7"
-    , className =? "KeePass2"       --> doShift "7" -- move keepass to workspace 7
+    , className =? "KeePass2"       --> doShift "7"
     --, className =? "VirtualBox" --> doFloat
     --, className =? "Gimp"       --> doFloat
     ]
@@ -109,11 +111,11 @@ myManageHook = composeAll
 
 myStartupHook :: X ()
 myStartupHook = do
-    --spawn "xcompmgr -c"         -- load compositor
-    spawn "compton"             -- load compositor
-    spawn "xrdb ~/.Xresources"  -- load X resources for this session
-    spawn "sh ~/.fehbg"         -- set a wallpaper using feh
-    spawn "stalonetray"         -- load stalonetray system tray
+    spawn "compton"                 -- load compositor
+    spawn "xrdb ~/.Xresources"      -- load X resources for this session
+    spawn "sh ~/.fehbg"             -- set a wallpaper using feh
+    spawn "xscreensaver -no-splash" -- start `xscreensaver`
+    spawn "stalonetray"             -- load stalonetray system tray
     --spawn "xsetroot -cursor_name left_ptr"  --use a "normal" cursor
 
 
@@ -121,7 +123,6 @@ myStartupHook = do
 
 main = do
     din <- spawnPipe myStatusBar
-    --xmonad $ ewmh $ pagerHints $ defaultConfig
     xmonad $ defaultConfig
         { terminal          = myTerminal
         , modMask           = myModMask
