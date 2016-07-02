@@ -30,13 +30,14 @@ URxvt*.modifier: alt            ! can be: alt, meta, hyper, super, mod1, mod2, m
 ! URxvt*.internalBorder: 0    ! size of internal border in pixels
 ! URxvt*.externalBorder: 0    ! size of external border in pixels
 
-URxvt*.font: xft:dejavu sans mono:size=8, xft:bitstream vera sans mono:size=8, xft:freemono:size=10, sft:linux libertine mono:size=10
-URxvt*.letterSpace: -1
+URxvt*.font: xft:inconsolata:size=10:antialias=false, xft:dejavu sans mono:size=8, xft:bitstream vera sans mono:size=8, xft:freemono:size=10, sft:linux libertine mono:size=10
+URxvt*.letterSpace: 0
 ! URxvt*.lineSpace: 0
 URxvt*.visualBell: True
 ! URxvt*.skipBuiltinGlyphs: False ! Disable the usage of the built-in block graphics/line drawing characters and just rely on what the specified fonts provide
 
-URxvt*.background: #000000
+URxvt*.depth: 32
+URxvt*.background: [80]#000000
 URxvt*.foreground: #b3b3b3
 ! URxvt*.colorBD: #888888 ! color for bolded text
 ! URxvt*.colorIT: #888888 ! color for italisized text
