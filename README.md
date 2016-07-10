@@ -7,6 +7,3 @@ To install these dotfiles:
 2. run the `link.sh` script
 3. log out and log back in
 
-## License
-
-These files are distributed under the terms of [The MIT License](http://opensource.org/licenses/MIT).
