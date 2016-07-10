@@ -30,8 +30,8 @@ URxvt*.modifier: alt            ! can be: alt, meta, hyper, super, mod1, mod2, m
 ! URxvt*.internalBorder: 0    ! size of internal border in pixels
 ! URxvt*.externalBorder: 0    ! size of external border in pixels
 
-URxvt*.font: xft:inconsolata:size=10:antialias=false, xft:dejavu sans mono:size=8, xft:bitstream vera sans mono:size=8, xft:freemono:size=10, sft:linux libertine mono:size=10
-URxvt*.letterSpace: 0
+URxvt*.font: xft:inconsolata:size=10:antialias=true, xft:terminus:size=8, xft:dejavu sans mono:size=8, xft:profont:size=10:antialias=false, xft:freemono:size=10:antialias=true
+URxvt*.letterSpace: -1
 ! URxvt*.lineSpace: 0
 URxvt*.visualBell: True
 ! URxvt*.skipBuiltinGlyphs: False ! Disable the usage of the built-in block graphics/line drawing characters and just rely on what the specified fonts provide
