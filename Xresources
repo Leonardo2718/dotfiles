@@ -46,6 +46,8 @@ URxvt*.foreground: #b3b3b3
 ! URxvt*.highlightColor: #888888 ! background color for highlighted text
 ! URxvt*.highlightTextColor: #000000  ! foreground color for highlighted text
 
+URxvt*color12: #00CCFF
+
 ! URxvt*.cursorColor: #888888     ! color of the cursor
 ! URxvt*.cursorColor2: #000000    ! color of text under cursor
 ! URxvt*.cursorUnderline: False   ! True: Make the cursor underlined. False: Make the cursor a box.

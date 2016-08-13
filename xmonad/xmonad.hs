@@ -128,12 +128,17 @@ main = do
         , modMask           = myModMask
         , focusFollowsMouse = False
 
-        --status bar
+        -- border
+        , borderWidth       = 1
+        , normalBorderColor = "#333333"
+        , focusedBorderColor= "#0000FF"
+
+        -- status bar
         , layoutHook        = avoidStruts $ myLayoutHook
         , logHook           = myLogHook din
         , handleEventHook   = docksEventHook <+> handleEventHook defaultConfig
 
-        --other hooks
+        -- other hooks
         , manageHook        = myManageHook <+> manageDocks <+> manageHook defaultConfig
         , startupHook       = myStartupHook
         }
