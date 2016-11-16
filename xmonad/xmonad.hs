@@ -34,7 +34,7 @@ import XMonad.Hooks.UrgencyHook
 
 --the basics~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-myTerminal = "urxvt"    --set my preferred terminal
+myTerminal = "termite"    --set my preferred terminal
 myModMask = mod4Mask    --set the modMask key to be the "windows key"
 
 
