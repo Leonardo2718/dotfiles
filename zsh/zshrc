@@ -45,8 +45,10 @@ bindkey -e
 autoload -U promptinit
 autoload -U colors && colors
 autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats ' %F{5}(%b)%f'
-zstyle ':vcs_info:*' enabel git
+zstyle ':vcs_info:git:*' formats ' %F{5}(%b)%f'
+zstyle ':vcs_info:git:*' actionformats ' %F{5}[%b|%a]%u%c%f'
+zstyle ':vcs_info:*'     max-exports 1
+zstyle ':vcs_info:*'     enable git
 setopt prompt_subst
 promptinit
 precmd () {
@@ -60,4 +62,3 @@ bindkey "${terminfo[kend]}" end-of-line         # support "end" key
 bindkey "\e[H" beginning-of-line                # support "home" key in termite
 bindkey "\e[F" end-of-line                      # support "end" key in termite
 bindkey "${terminfo[kdch1]}" delete-char        # support "delete" key
-
