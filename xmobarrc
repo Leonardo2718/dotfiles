@@ -10,7 +10,7 @@ Config {
    , sepChar =  "%"   -- delineator between plugin names and straight text
    , alignSep = "}{"  -- separator between left-right alignment
    --, template = "|%battery% |%multicpu% |%coretemp% |%memory% |%disku% |%bright% |wlp2s0: %wlp2s0wi% %wlp2s0% }{ %StdinReader% | %date%"
-   , template = "|%multicpu% |%coretemp% |%memory% |%disku% |%swap% |%bright% |%dynnetwork% }{ %StdinReader% | %date%"
+   , template = "|%multicpu% |%memory% |%disku% |%diskio% |%enp0s3% }{ %StdinReader% | %date%"
 
    -- general behavior
    , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -24,91 +24,122 @@ Config {
    , commands =
 
         -- batter monitor; aliases to `battery`
-        [ Run BatteryP ["BAT0"] [ "--template"  , "Bat: <timeleft> <left>%"
-                                , "-L"          , "15"
-                                , "-H"          , "20"
-                                , "--low"       , "red"
-                                , "--normal"    , "orange"
-                                , "--high"      , "green"
-                                ] 10
+--        [ Run BatteryP ["BAT0"] [ "--template"  , "Bat: <timeleft> <left>%"
+--                                , "-L"          , "15"
+--                                , "-H"          , "20"
+--                                , "--low"       , "red"
+--                                , "--normal"    , "orange"
+--                                , "--high"      , "green"
+--                                ] 10
 
         -- cpu activity monitor; aliases to `multicpu`
-        , Run MultiCpu          [ "--template"  , "CPU: <vbar0> <vbar1>"
+        [ Run MultiCpu          [ "--template"  , "CPU: <total0> <total1> <total2> <total3>"
                                 , "--Low"       , "50"         -- units: %
                                 , "--High"      , "85"         -- units: %
                                 , "--low"       , "green"
                                 , "--normal"    , "orange"
                                 , "--high"      , "red"
+                                , "--suffix"    , "true"
+                                , "--minwidth"  , "4"
+                                , "--padchars"  , " "
+                                , "--align"     , "l"
                                 ] 10
 
         -- cpu core temperature monitor; aliases to `coretemp`
-        , Run CoreTemp          [ "--template"  , "Temp°C: <core0> <core1>"
-                                , "--Low"       , "70"        -- units: °C
-                                , "--High"      , "80"        -- units: °C
-                                , "--low"       , "green"
-                                , "--normal"    , "orange"
-                                , "--high"      , "red"
-                                ] 10
+--        , Run CoreTemp          [ "--template"  , "Temp°C: <core0> <core1>"
+--                                , "--Low"       , "70"        -- units: °C
+--                                , "--High"      , "80"        -- units: °C
+--                                , "--low"       , "green"
+--                                , "--normal"    , "orange"
+--                                , "--high"      , "red"
+--                                ] 10
 
         -- memory usage monitor; aliases to `memory`
-        , Run Memory            [ "--template"  , "Mem: <usedratio>%"
+        , Run Memory            [ "--template"  , "Mem: <usedratio>"
                                 , "--Low"       , "70"        -- units: %
                                 , "--High"      , "90"        -- units: %
                                 , "--low"       , "green"
                                 , "--normal"    , "orange"
                                 , "--high"      , "red"
+                                , "--suffix"    , "true"
+                                , "--minwidth"  , "4"
+                                , "--padchars"  , " "
+                                , "--align"     , "l"
                                 ] 10
 
         -- disk usage monitor; aliases to `disku`
-        , Run DiskU             [ ("/", "Disk: <usedp>%")]
+        , Run DiskU             [ ("/", "Disk: <usedp>")]
                                 [ "--Low"       , "85"        -- units: %
                                 , "--High"      , "90"        -- units: %
                                 , "--low"       , "green"
                                 , "--normal"    , "orange"
                                 , "--high"      , "red"
+                                , "--suffix"    , "true"
+                                , "--minwidth"  , "4"
+                                , "--padchars"  , " "
+                                , "--align"     , "l"
                                 ] 100
+
+        -- disk io monitor; aliases to `diskio`
+        , Run DiskIO            [ ("/", "R:<read> W:<write>") ]
+                                [ "--Low"       , "10000"
+                                , "--High"      , "30000"
+                                , "--low"       , "#00CCFF"
+                                , "--normal"    , "gree"
+                                , "--high"      , "gree"
+                                , "--suffix"    , "true"
+                                , "--minwidth"  , "4"
+                                --, "--ddigits"   , "2"
+                                , "--padchars"  , " "
+                                , "--align"     , "r"
+                                ] 10
 
         -- swap usage monitor; aliases to `swap`
-        , Run Swap              [ "--template"  , "Swap: <usedratio>%"
-                                , "--Low"       , "0"        -- units: %
-                                , "--High"      , "5"        -- units: %
-                                , "--low"       , "green"
-                                , "--normal"    , "orange"
-                                , "--high"      , "red"
-                                ] 100
+--        , Run Swap              [ "--template"  , "Swap: <usedratio>%"
+--                                , "--Low"       , "0"        -- units: %
+--                                , "--High"      , "5"        -- units: %
+--                                , "--low"       , "green"
+--                                , "--normal"    , "orange"
+--                                , "--high"      , "red"
+--                                ] 100
 
         -- screen brightness monitor; aliases to `bright`
-        , Run Brightness        [ "--template"  , "Bright: <fc=#00CCFF><vbar></fc>"
-                                ] 10
+--        , Run Brightness        [ "--template"  , "Bright: <fc=#00CCFF><vbar></fc>"
+--                                ] 10
 
         -- network activity monitor (dynamic interface resolution); aliases to `dynnetwork`
-        , Run DynNetwork        [ "--template"  , "<dev>: U<tx> D<rx>"
-                                , "-S"          , "True"
-                                , "--Low"       , "100000"
-                                , "--High"      , "300000"
-                                , "--low"       , "#00CCFF"
-                                , "--normal"    , "green"
-                                , "--high"      , "green"
-                                ] 10
+--        , Run DynNetwork        [ "--template"  , "<dev>: U<tx> D<rx>"
+--                                , "-S"          , "True"
+--                                , "--Low"       , "100000"
+--                                , "--High"      , "300000"
+--                                , "--low"       , "#00CCFF"
+--                                , "--normal"    , "green"
+--                                , "--high"      , "green"
+--                                ] 10
 
-        -- network activity monitor for `wlp2s0`; aliases to `wlp2s0`
-        , Run Network "wlp2s0"  [ "--template"  , "U<tx> D<rx>"
-                                , "-S"          , "True"
+        -- network activity monitor for `enp0s3`; aliases to `enp0s3`
+        , Run Network "enp0s3"  [ "--template"  , "U:<tx> D:<rx>"
+                                -- , "-S"          , "True"
                                 , "--Low"       , "100000"
                                 , "--High"      , "300000"
                                 , "--low"       , "#00CCFF"
                                 , "--normal"    , "green"
                                 , "--high"      , "green"
+                                , "--suffix"    , "true"
+                                , "--minwidth"  , "7"
+                                --, "--ddigits"   , "2"
+                                , "--padchars"  , " "
+                                , "--align"     , "r"
                                 ] 10
 
         -- network activity monitor for `wlp2s0`; aliases to `wlp2s0wi`
-        , Run Wireless "wlp2s0" [ "--template"  , "<essid> <qualityvbar>"
-                                , "--Low"       , "25"
-                                , "--High"      , "50"
-                                , "--low"       , "red"
-                                , "--normal"    , "orange"
-                                , "--high"      , "green"
-                                ] 10
+--        , Run Wireless "wlp2s0" [ "--template"  , "<essid> <qualityvbar>"
+--                                , "--Low"       , "25"
+--                                , "--High"      , "50"
+--                                , "--low"       , "red"
+--                                , "--normal"    , "orange"
+--                                , "--high"      , "green"
+--                                ] 10
 
         , Run StdinReader
 

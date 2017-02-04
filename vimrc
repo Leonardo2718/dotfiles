@@ -28,6 +28,7 @@ autocmd FileType markdown call MarkdownConfig()
 " config specific for git commit message
 function! GitConfig()
     set spell spelllang=en_ca
+    set textwidth=80
 endfunction
 
 " config specific for Markdown files

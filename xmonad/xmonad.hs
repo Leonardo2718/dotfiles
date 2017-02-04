@@ -72,19 +72,17 @@ myKeys = [ --((0, xK_Print), spawn "scrot -q 100")                            --
 
 
 --layout hook~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-myLayoutHook = onWorkspace "1" terminalLayout $ onWorkspace "2" internetLayout $ onWorkspace "3" devLayout $ onWorkspace "4" devLayout $ onWorkspace "5" devLayout $ onWorkspace "6" devLayout $ onWorkspace "7" floatingLayout $ onWorkspace "8" floatingLayout $ standardLayout where
-    terminalLayout  = Grid ||| myTall ||| Full ||| myOneBig
+myLayoutHook = onWorkspace "1" terminalLayout $ onWorkspace "2" internetLayout $ onWorkspace "3" devGrid $ onWorkspace "4" devGrid$ onWorkspace "5" devLayout $ onWorkspace "6" devLayout $ onWorkspace "7" floatingLayout $ onWorkspace "8" floatingLayout $ standardLayout where
+    terminalLayout  = Grid ||| myTall ||| Full
     internetLayout  = Full ||| simpleTabbed ||| simpleFloat
-    devLayout       = Full ||| myTwoPane ||| simpleTabbed
+    devLayout       = Full ||| myTwoPane ||| myTall ||| Grid
+    devGrid         = Grid ||| Full ||| myTall ||| myTwoPane
     floatingLayout  = simpleFloat ||| simpleTabbed
     standardLayout  = myTall ||| Mirror myTall ||| Full ||| Grid ||| myOneBig ||| simpleFloat ||| simpleTabbed
 
     myTwoPane       = TwoPane delta masterPortion where
         masterPortion = 1/2
         delta = 3/100
-    myOneBig        = OneBig horizontalPortion verticalPortion where
-        horizontalPortion = 3/4
-        verticalPortion = 3/4
     myTall          = Tall nmaster delta ratio  where   -- default tiling algorithm partitions the screen into two panes
         nmaster = 1                                     -- The default number of windows in the master pane
         delta   = 1/100                                 -- Percent of screen to increment by when resizing panes
@@ -98,8 +96,9 @@ use `xprop` to get a "className" or "appName"
 
 myManageHook = composeAll
     [ className =? "vivaldi-stable" --> doShift "2" -- move vivaldi to workspace 2
-    , className =? "Firefox"        --> doShift "2"
+    , className =? "qutebrowser"        --> doShift "2"
     , className =? "Slack"          --> doShift "2"
+    , className =? "QtCreator"      --> doShift "5"
     , title     =? "Encryptr"       --> doShift "7"
     , className =? "KeePass2"       --> doShift "7"
     --, className =? "VirtualBox" --> doFloat
