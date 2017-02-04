@@ -88,7 +88,7 @@ Config {
                                 , "--normal"    , "gree"
                                 , "--high"      , "gree"
                                 , "--suffix"    , "true"
-                                , "--minwidth"  , "4"
+                                , "--minwidth"  , "5"
                                 --, "--ddigits"   , "2"
                                 , "--padchars"  , " "
                                 , "--align"     , "r"
