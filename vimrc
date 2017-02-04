@@ -5,6 +5,9 @@ syntax on
 set number
 colorscheme colorer
 
+" enable mouse support
+set mouse=a
+
 " tab/indent config
 set tabstop=4
 set shiftwidth=4
