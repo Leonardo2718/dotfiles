@@ -78,7 +78,7 @@ myLayoutHook = onWorkspace "1" terminalLayout $ onWorkspace "2" internetLayout $
     devLayout       = Full ||| myTwoPane ||| myTall ||| Grid
     devGrid         = Grid ||| Full ||| myTall ||| myTwoPane
     floatingLayout  = simpleFloat ||| simpleTabbed
-    standardLayout  = myTall ||| Mirror myTall ||| Full ||| Grid ||| myOneBig ||| simpleFloat ||| simpleTabbed
+    standardLayout  = myTall ||| Mirror myTall ||| Full ||| Grid ||| OneBig (1/2) (1/2) ||| simpleFloat ||| simpleTabbed
 
     myTwoPane       = TwoPane delta masterPortion where
         masterPortion = 1/2
