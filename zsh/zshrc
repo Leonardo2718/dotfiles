@@ -62,3 +62,5 @@ bindkey "${terminfo[kend]}" end-of-line         # support "end" key
 bindkey "\e[H" beginning-of-line                # support "home" key in termite
 bindkey "\e[F" end-of-line                      # support "end" key in termite
 bindkey "${terminfo[kdch1]}" delete-char        # support "delete" key
+
+export PATH=$PATH:$HOME/.cargo/bin
