@@ -96,11 +96,11 @@ use `xprop` to get a "className" or "appName"
 
 myManageHook = composeAll
     [ className =? "vivaldi-stable" --> doShift "2" -- move vivaldi to workspace 2
-    , className =? "qutebrowser"        --> doShift "2"
+    , className =? "qutebrowser"    --> doShift "2"
     , className =? "Slack"          --> doShift "2"
     , className =? "QtCreator"      --> doShift "5"
     , title     =? "Encryptr"       --> doShift "7"
-    , className =? "KeePass2"       --> doShift "7"
+    , className =? "Keepassx2"      --> doShift "7"
     --, className =? "VirtualBox" --> doFloat
     --, className =? "Gimp"       --> doFloat
     ]
