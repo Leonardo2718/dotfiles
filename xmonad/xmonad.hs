@@ -34,7 +34,7 @@ import XMonad.Hooks.UrgencyHook
 
 --the basics~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-myTerminal = "termite"    --set my preferred terminal
+myTerminal = "termite"  --set my preferred terminal
 myModMask = mod4Mask    --set the modMask key to be the "windows key"
 
 
@@ -49,18 +49,22 @@ myLogHook h = dynamicLogWithPP xmobarPP
 
 --key bindings~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 {-
-use the `xev` command to get key names
+use the `xev`/`showkey`/`evemu-describe` command to get key names
 -}
 
 myKeys = [ --((0, xK_Print), spawn "scrot -q 100")                            --take screenshot when 'Prt sc' is pressed
          --, ((0, xK_Alt_L .|. xK_Print), spawn "scrot -s -q 100")            --select an area using the mouse and take a screenshot of it
 
            ((myModMask, xK_p), spawn "dmenu_run -fn 'xft:Monospace:size=8:normal:antialias=true' -nb 'black' -nf 'yellow' -sb 'yellow' -sf 'black'")
-         , ((myModMask, xK_l), spawn "xscreensaver-command --lock")     -- lock screen
+         , ((myModMask, xK_l), spawn "light-locker-command --lock")     -- lock screen
 
          --media controls (for when hardware defaults don't work)
-         , ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 1%-")    --decrease volume by 1%
-         , ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 1%+")    --increase volume by 1%
+         , ((0, xF86XK_AudioRaiseVolume)  , spawn "pamixer -i 1")    -- increase volume by 1%
+         , ((0, xF86XK_AudioLowerVolume)  , spawn "pamixer -d 1")    -- decrease volume by 1%
+         , ((0, xF86XK_AudioMute)         , spawn "pamixer -t")      -- toggle audio mute
+         , ((0, xF86XK_AudioMicMute)      , spawn "pactl set-source-mute 1 toggle") -- toggle microphone mute
+         , ((0, xF86XK_MonBrightnessUp)   , spawn "light -A 2") -- increase backlight level by 2%
+         , ((0, xF86XK_MonBrightnessDown) , spawn "light -U 2") -- decrease backlight level by 2%
 
          --layout controls
          --, ((myModMask .|. mod1Mask, xK_g), sendMessage $ JumpToLayout "Grid")
@@ -95,7 +99,8 @@ use `xprop` to get a "className" or "appName"
 -}
 
 myManageHook = composeAll
-    [ className =? "vivaldi-stable" --> doShift "2" -- move vivaldi to workspace 2
+    [ className =? "Firefox"        --> doShift "2" -- move vivaldi to workspace 2
+    , className =? "vivaldi-stable" --> doShift "2"
     , className =? "qutebrowser"    --> doShift "2"
     , className =? "Slack"          --> doShift "2"
     , className =? "QtCreator"      --> doShift "5"
@@ -110,10 +115,11 @@ myManageHook = composeAll
 
 myStartupHook :: X ()
 myStartupHook = do
-    spawn "compton"                 -- load compositor
+    spawn "compton -CGb"            -- load compositor
     spawn "xrdb ~/.Xresources"      -- load X resources for this session
     spawn "sh ~/.fehbg"             -- set a wallpaper using feh
-    spawn "xscreensaver -no-splash" -- start `xscreensaver`
+    --spawn "xscreensaver -no-splash" -- start `xscreensaver`
+    spawn "light-locker"            -- start `light-locker`
     spawn "stalonetray"             -- load stalonetray system tray
     --spawn "xsetroot -cursor_name left_ptr"  --use a "normal" cursor
 
