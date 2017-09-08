@@ -1,8 +1,7 @@
 Config {
 
    -- appearance
-     --font =         "xft:Monospace:size=8:normal:antialias=true"
-     font =         "xft:Inconsolata:size=10:normal:antialias=true"
+     font =         "xft:Inconsolata:size=6:normal:antialias=true"
    , bgColor =      "black"
    , fgColor =      "#b3b3b3"
    , position =     Top
@@ -148,7 +147,7 @@ Config {
 --                                ] 10
 
         , Run Com "pamixer" ["--get-volume"] "vol" 5
-        , Run Com "light"   ["-G"] "blight" 5
+        , Run Com "xbacklight"    [] "blight" 5
 
         , Run StdinReader
 
