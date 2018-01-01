@@ -9,3 +9,5 @@ ln -s $PWD/fehbg $HOME/.fehbg
 ln -s $PWD/textadept $HOME/.textadept
 ln -s $PWD/stalonetrayrc $HOME/.stalonetrayrc
 ln -s $PWD/termite $HOME/.config/
+ln -s $PWD/gdbinit $HOME/.gdbinit
+ln -s $PWD/dunst $HOME/.config/

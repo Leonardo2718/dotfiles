@@ -9,3 +9,5 @@ rm $HOME/.fehbg
 rm $HOME/.textadept
 rm $HOME/.stalonetrayrc
 rm $HOME/.config/termite
+rm $HOME/.gdbinit
+rm $HOME/.config/dunst
