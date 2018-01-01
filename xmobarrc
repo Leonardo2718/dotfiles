@@ -1,7 +1,7 @@
 Config {
 
    -- appearance
-     font =         "xft:Inconsolata:size=6:normal:antialias=true"
+     font =         "xft:Inconsolata:size=9:normal:antialias=true"
    , bgColor =      "black"
    , fgColor =      "#b3b3b3"
    , position =     Top
