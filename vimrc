@@ -3,7 +3,8 @@ set encoding=utf-8
 "set digraph
 syntax on
 set number
-colorscheme colorer
+colorscheme inkpot
+"colorscheme blacklight
 
 " enable mouse support
 set mouse=a
