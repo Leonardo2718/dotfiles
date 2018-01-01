@@ -55,16 +55,17 @@ use the `xev`/`showkey`/`evemu-describe` command to get key names
 myKeys = [ --((0, xK_Print), spawn "scrot -q 100")                            --take screenshot when 'Prt sc' is pressed
          --, ((0, xK_Alt_L .|. xK_Print), spawn "scrot -s -q 100")            --select an area using the mouse and take a screenshot of it
 
-           ((myModMask, xK_p), spawn "dmenu_run -fn 'xft:Inconsolata:size=6:normal:antialias=true' -nb 'black' -nf 'yellow' -sb 'yellow' -sf 'black'")
+           ((myModMask, xK_p), spawn "dmenu_run -fn 'xft:Inconsolata:size=8:normal:antialias=true' -nb 'black' -nf 'yellow' -sb 'yellow' -sf 'black'")
          , ((myModMask, xK_l), spawn "light-locker-command --lock")     -- lock screen
+         , ((myModMask, xK_s), spawn "systemctl suspend")               -- suspend computer
 
          --media controls (for when hardware defaults don't work)
-         , ((0, xF86XK_AudioRaiseVolume)  , spawn "pamixer -i 1")    -- increase volume by 1%
-         , ((0, xF86XK_AudioLowerVolume)  , spawn "pamixer -d 1")    -- decrease volume by 1%
+         , ((0, xF86XK_AudioRaiseVolume)  , spawn "pamixer -i 2")    -- increase volume by 2%
+         , ((0, xF86XK_AudioLowerVolume)  , spawn "pamixer -d 2")    -- decrease volume by 2%
          , ((0, xF86XK_AudioMute)         , spawn "pamixer -t")      -- toggle audio mute
          , ((0, xF86XK_AudioMicMute)      , spawn "pactl set-source-mute 1 toggle") -- toggle microphone mute
-         , ((0, xF86XK_MonBrightnessUp)   , spawn "xbacklight -inc 5") -- increase backlight level by 5%
-         , ((0, xF86XK_MonBrightnessDown) , spawn "xbacklight -dec 5") -- decrease backlight level by 5%
+         , ((0, xF86XK_MonBrightnessUp)   , spawn "light -A 2")      -- increase backlight brightness by 2%
+         , ((0, xF86XK_MonBrightnessDown) , spawn "light -U 2")      -- decrease backlight brightness by 2%
 
          --layout controls
          --, ((myModMask .|. mod1Mask, xK_g), sendMessage $ JumpToLayout "Grid")
@@ -99,13 +100,14 @@ use `xprop` to get a "className" or "appName"
 -}
 
 myManageHook = composeAll
-    [ className =? "Firefox"        --> doShift "2" -- move vivaldi to workspace 2
+    [ className =? "Firefox"        --> doShift "2" -- move Firefox to workspace 2
     , className =? "vivaldi-stable" --> doShift "2"
     , className =? "qutebrowser"    --> doShift "2"
     , className =? "Slack"          --> doShift "2"
     , className =? "QtCreator"      --> doShift "5"
     , title     =? "Encryptr"       --> doShift "7"
     , className =? "Keepassx2"      --> doShift "7"
+    , className =? "KeePass2"       --> doShift "7"
     --, className =? "VirtualBox" --> doFloat
     --, className =? "Gimp"       --> doFloat
     ]
