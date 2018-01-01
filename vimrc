@@ -20,11 +20,14 @@ set list
 
 " auto commands
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing white space before saving a file
+autocmd BufNewFile,BufRead *.frag,*.vert,*.fp,*.vp,*.glsl setf glsl
+autocmd BufNewFile,BufRead trace.log* set filetype=trtracelog
 
 " File type specific config (see `filetype.vim` for file type detection information,
 " including a list of known file types)
 autocmd FileType gitcommit call GitConfig()
 autocmd FileType markdown call MarkdownConfig()
+autocmd FileType trtracelog call TRTraceLog()
 
 " config specific for git commit message
 function! GitConfig()
@@ -35,4 +38,12 @@ endfunction
 " config specific for Markdown files
 function! MarkdownConfig()
     set spell spelllang=en_ca
+endfunction
+
+function! TRTraceLog()
+    syntax off
+    set nolist
+    set hlsearch
+    set cursorline
+    set nowrap
 endfunction
