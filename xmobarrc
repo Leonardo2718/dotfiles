@@ -147,7 +147,7 @@ Config {
 --                                ] 10
 
         , Run Com "pamixer" ["--get-volume"] "vol" 5
-        , Run Com "xbacklight"    [] "blight" 5
+        , Run Com "light"    [] "blight" 5
 
         , Run StdinReader
 
