@@ -12,3 +12,4 @@ rm $HOME/.stalonetrayrc
 rm $HOME/.config/termite
 rm $HOME/.gdbinit
 rm $HOME/.config/dunst
+rm $HOME/.config/i3

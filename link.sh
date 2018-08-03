@@ -12,3 +12,4 @@ ln -s $PWD/stalonetrayrc $HOME/.stalonetrayrc
 ln -s $PWD/termite $HOME/.config/
 ln -s $PWD/gdbinit $HOME/.gdbinit
 ln -s $PWD/dunst $HOME/.config/
+ln -s $PWD/i3 $HOME/.config/
