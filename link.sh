@@ -1,6 +1,7 @@
 #! /usr/bin/sh
 
 ln -s $PWD/zsh/zshrc $HOME/.zshrc
+ln -s $PWD/zsh/zprofile $HOME/.zprofile
 ln -s $PWD/Xresources $HOME/.Xresources
 ln -s $PWD/xmonad $HOME/.xmonad
 ln -s $PWD/vimrc $HOME/.vimrc

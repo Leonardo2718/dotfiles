@@ -1,6 +1,7 @@
 #! /usr/bin/sh
 
 rm $HOME/.zshrc
+rm $HOME/.zprofile
 rm $HOME/.Xresources
 rm $HOME/.xmonad
 rm $HOME/.vimrc
