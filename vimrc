@@ -3,7 +3,7 @@ set encoding=utf-8
 "set digraph
 syntax on
 set number
-colorscheme inkpot
+"colorscheme inkpot
 "colorscheme blacklight
 
 " enable mouse support
@@ -28,6 +28,7 @@ autocmd BufNewFile,BufRead trtrace.log* set filetype=trtracelog
 autocmd FileType gitcommit call GitConfig()
 autocmd FileType gitrebase call GitRebase()
 autocmd FileType markdown call MarkdownConfig()
+autocmd FileType rst call MarkdownConfig()
 autocmd FileType trtracelog call TRTraceLog()
 
 " config specific for git commit message
@@ -44,6 +45,8 @@ endfunction
 " config specific for Markdown files
 function! MarkdownConfig()
     set spell spelllang=en_ca
+    set tabstop=2
+    set shiftwidth=2
 endfunction
 
 function! TRTraceLog()
@@ -53,3 +56,9 @@ function! TRTraceLog()
     set cursorline
     set nowrap
 endfunction
+
+function! LongLines()
+    set cursorline
+    set nowrap
+endfunction
+
