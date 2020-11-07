@@ -54,8 +54,14 @@ promptinit
 precmd () {
     vcs_info
 }
-PROMPT="%F{yellow}%m%f %F{12}%~%f$(echo '$vcs_info_msg_0_')%F{yellow}>%f "
-RPROMPT="[%(?.%F{green}%?%f.%F{red}%?%f)] %(?.:).:()"
+NEWLINE=$'\n'
+USER_COLOR="%F{yellow}"
+USER_NAME="${USER_COLOR}%n%f"
+HOST_NAME="${USER_COLOR}%m%f"
+CURR_PATH="%F{12}%~%f"
+STATUS_EMOJI="[%(?.%F{green}%?%f.%F{red}%?%f)] %(?.:).:()"
+PROMPT="${USER_NAME}%F{yellow}%B@%b%f${HOST_NAME} ${CURR_PATH}$(echo '$vcs_info_msg_0_') ${STATUS_EMOJI}${NEWLINE}%F{yellow}>%f "
+# RPROMPT="[%(?.%F{green}%?%f.%F{red}%?%f)] %(?.:).:()"
 
 bindkey "${terminfo[khome]}" beginning-of-line  # support "home" key
 bindkey "${terminfo[kend]}" end-of-line         # support "end" key
